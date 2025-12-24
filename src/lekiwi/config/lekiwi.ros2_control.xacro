@@ -17,42 +17,42 @@
           <param name="joint_offsets_file">$(find lekiwi_hardware)/config/joint_offsets.yaml</param>
         </xacro:unless>
       </hardware>
-      <joint name="Shoulder_Rotation">
+      <joint name="shoulder_pan">
         <command_interface name="position" />
         <state_interface name="position">
           <param name="initial_value">${initial_positions['Shoulder_Rotation']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
-      <joint name="Shoulder_Pitch">
+      <joint name="shoulder_lift">
         <command_interface name="position" />
         <state_interface name="position">
           <param name="initial_value">${initial_positions['Shoulder_Pitch']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
-      <joint name="Elbow">
+      <joint name="elbow_flex">
         <command_interface name="position" />
         <state_interface name="position">
           <param name="initial_value">${initial_positions['Elbow']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
-      <joint name="Wrist_Pitch">
+      <joint name="wrist_flex">
         <command_interface name="position" />
         <state_interface name="position">
           <param name="initial_value">${initial_positions['Wrist_Pitch']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
-      <joint name="Wrist_Roll">
+      <joint name="wrist_roll">
         <command_interface name="position" />
         <state_interface name="position">
           <param name="initial_value">${initial_positions['Wrist_Roll']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
-      <joint name="Gripper">
+      <joint name="gripper">
         <command_interface name="position" />
         <state_interface name="position">
           <param name="initial_value">${initial_positions['Gripper']}</param>
