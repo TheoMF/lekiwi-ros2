@@ -138,6 +138,20 @@ namespace lekiwi_controller
           position_commands_[i] = ticks_to_radians(raw_pos, i);
           RCLCPP_INFO(rclcpp::get_logger("LeKiwiInterface"), "Servo %d initialized to position: %.2f rad", servo_id, position_commands_[i]);
         }
+
+        // Configure wheel servos (7-9) for velocity mode
+        if (servo_id >= 7)
+        {
+          // Set servo to velocity control mode (Mode 1)
+          if (st3215_.Mode(servo_id, 1))
+          {
+            RCLCPP_INFO(rclcpp::get_logger("LeKiwiInterface"), "Servo %d configured for velocity mode", servo_id);
+          }
+          else
+          {
+            RCLCPP_WARN(rclcpp::get_logger("LeKiwiInterface"), "Failed to configure servo %d for velocity mode", servo_id);
+          }
+        }
       }
     }
 
@@ -254,13 +268,13 @@ namespace lekiwi_controller
           }
           else
           {
-            RCLCPP_DEBUG(rclcpp::get_logger("LeKiwiInterface"), "Successfully wrote velocity to servo %d", servo_id);
+            RCLCPP_INFO(rclcpp::get_logger("LeKiwiInterface"), "Successfully wrote velocity to servo %d", servo_id);
           }
         }
       }
 
       bool action_result = st3215_.RegWriteAction();
-      RCLCPP_DEBUG(rclcpp::get_logger("LeKiwiInterface"), "RegWriteAction() executed, result: %d", action_result);
+      RCLCPP_INFO(rclcpp::get_logger("LeKiwiInterface"), "RegWriteAction() executed, result: %d", action_result);
     }
 
     if (command_publisher_)
