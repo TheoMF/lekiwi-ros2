@@ -96,8 +96,8 @@ def generate_launch_description():
         parameters=[{
             'wheel_radius': 0.05,
             'base_radius': 0.125,
-            'max_wheel_velocity': 3.0,
-            'cmd_timeout': 0.2,
+            'max_wheel_velocity': 6.0,
+            'cmd_timeout': 0.5,
             'safety_check_rate': 50.0,
         }],
         output='screen',
@@ -157,5 +157,5 @@ def generate_launch_description():
         delay_wheel_controller_after_gripper_controller,
         holonomic_controller_node,
         odometry_publisher_node,
-        zero_pose_node,
+        #zero_pose_node,
     ])
