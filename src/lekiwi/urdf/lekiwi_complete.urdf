@@ -1886,12 +1886,13 @@
         <parent link="Base_08q-v1" />
         <child link="Passive_Horn_01-v1" />
     </joint>
-    <joint name="shoulder_pan" type="continuous">
+    <joint name="shoulder_pan" type="revolute">
         <origin xyz="-0.010250000000000084 0.03459999999999999 -0.032799999999999996"
             rpy="1.5707963267948966 -1.5707963267948966 3.94430452610506e-31" />
         <parent link="STS3215_03a-v1" />
         <child link="shoulder_link" />
-        <axis xyz="-3.944304526105059e-31 3.944304526105059e-31 1.0" />
+        <axis xyz="0 0 1" />
+        <limit effort="10" velocity="10" lower="-1.91986" upper="1.91986"/>
     </joint>
     <!--<joint name="Rotation_Pitch_08i-v1_Rigid-46" type="fixed">
         <origin xyz="0.023000000000000066 -0.04085 -0.023200000000000002"
