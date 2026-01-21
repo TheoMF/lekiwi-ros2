@@ -2,6 +2,7 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
+from sensor_msgs.msg import JointState
 from std_msgs.msg import Float64MultiArray
 import numpy as np
 import math
@@ -13,7 +14,7 @@ class HolonomicController(Node):
         
         self.declare_parameter('wheel_radius', 0.05)
         self.declare_parameter('base_radius', 0.125)
-        self.declare_parameter('max_wheel_velocity', 3.0)
+        self.declare_parameter('max_wheel_velocity', 2.0)
         self.declare_parameter('cmd_timeout', 1.0)
         self.declare_parameter('safety_check_rate', 10.0)
         
@@ -28,12 +29,19 @@ class HolonomicController(Node):
             '/cmd_vel',
             self.cmd_vel_callback,
             50)
+    
+        self.joint_state_sub = self.create_subscription(
+            JointState,
+            '/joint_states',
+            self.joint_states_callback,
+            50)
         
         self.wheel_vel_pub = self.create_publisher(
             Float64MultiArray,
             '/lekiwi_wheel_controller/commands',
             50)
         
+        self.wheels_name = ["left_wheel_drive","rear_wheel_drive", "right_wheel_drive"]
         self.last_cmd_time = time.time()
         self.is_stopped = False
         self.last_wheel_velocities = np.array([0.0, 0.0, 0.0])
@@ -57,7 +65,14 @@ class HolonomicController(Node):
         self.get_logger().info(f"Wheel radius: {self.wheel_radius}m, Base radius: {self.base_radius}m")
         self.get_logger().info(f"Max wheel velocity: {self.max_wheel_velocity} rad/s")
         self.get_logger().info(f"Command timeout: {self.cmd_timeout}s, Safety check rate: {self.safety_check_rate}Hz")
-        
+
+    def joint_states_callback(self, msg: JointState):
+        wheel_idxs = []
+        for wheel_name in self.wheels_name:
+            wheel_idxs.append(msg.name.index(wheel_name))
+        for i in range(3):
+            self.current_wheel_velocities[i] = msg.velocity[wheel_idxs[i]]
+
     def cmd_vel_callback(self, msg):
         self.last_cmd_time = time.time()
         
@@ -90,6 +105,7 @@ class HolonomicController(Node):
                 self.current_wheel_velocities[i] = min(target, current + max_change)
             elif target < current:
                 self.current_wheel_velocities[i] = max(target, current - max_change)
+            
         
         self.publish_wheel_velocities(self.current_wheel_velocities)
         

@@ -342,7 +342,7 @@ Visualization Manager:
         drive_motor_mount-v11-2:
           Value: false
         gripper_frame_link:
-          Value: false
+          Value: true
         gripper_link:
           Value: false
         lipo_battery_mount-v3:
@@ -351,6 +351,8 @@ Visualization Manager:
           Value: false
         moving_jaw_so101_v1_link:
           Value: false
+        odom:
+          Value: true
         omni_wheel_mount-v5:
           Value: false
         omni_wheel_mount-v5-1:
@@ -371,65 +373,66 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        base_footprint:
-          base_link:
-            94868A713_NO-THREADS_Female-Threaded-Hex-Standoff:
-              base_plate_layer2-v3:
-                Base_08q-v1:
-                  Base:
-                    {}
-                  Passive_Horn_01-v1:
-                    {}
-                  STS3215_03a-v1:
-                    shoulder_link:
-                      upper_arm_link:
-                        lower_arm_link:
-                          wrist_link:
-                            gripper_link:
-                              camera:
-                                {}
-                              gripper_frame_link:
-                                {}
-                              moving_jaw_so101_v1_link:
-                                {}
-                  WaveShare_Mounting_Plate_01d-v1:
-                    {}
-                Bottom-V2-v3:
-                  Top-V2-v2:
-                    {}
-            94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-1:
-              {}
-            94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-2:
-              {}
-            94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-3:
-              {}
-            94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-4:
-              {}
-            94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-5:
-              {}
-            Camera-Mount-v8:
-              Camera-Model-v3:
+        odom:
+          base_footprint:
+            base_link:
+              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff:
+                base_plate_layer2-v3:
+                  Base_08q-v1:
+                    Base:
+                      {}
+                    Passive_Horn_01-v1:
+                      {}
+                    STS3215_03a-v1:
+                      shoulder_link:
+                        upper_arm_link:
+                          lower_arm_link:
+                            wrist_link:
+                              gripper_link:
+                                camera:
+                                  {}
+                                gripper_frame_link:
+                                  {}
+                                moving_jaw_so101_v1_link:
+                                  {}
+                    WaveShare_Mounting_Plate_01d-v1:
+                      {}
+                  Bottom-V2-v3:
+                    Top-V2-v2:
+                      {}
+              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-1:
                 {}
-            drive_motor_mount-v11:
-              ST3215_Servo_Motor-v1:
-                omni_wheel_mount-v5:
-                  4-Omni-Directional-Wheel_Single_Body-v1:
-                    {}
-            drive_motor_mount-v11-1:
-              ST3215_Servo_Motor-v1-1:
-                omni_wheel_mount-v5-1:
-                  4-Omni-Directional-Wheel_Single_Body-v1-1:
-                    {}
-            drive_motor_mount-v11-2:
-              ST3215_Servo_Motor-v1-2:
-                omni_wheel_mount-v5-2:
-                  4-Omni-Directional-Wheel_Single_Body-v1-2:
-                    {}
-            lipo_battery_mount-v3:
-              Battery---Battery-5.2-Ah-DC5521-Plug-v2:
+              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-2:
                 {}
-            servo_controller_mount-v3:
-              {}
+              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-3:
+                {}
+              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-4:
+                {}
+              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-5:
+                {}
+              Camera-Mount-v8:
+                Camera-Model-v3:
+                  {}
+              drive_motor_mount-v11:
+                ST3215_Servo_Motor-v1:
+                  omni_wheel_mount-v5:
+                    4-Omni-Directional-Wheel_Single_Body-v1:
+                      {}
+              drive_motor_mount-v11-1:
+                ST3215_Servo_Motor-v1-1:
+                  omni_wheel_mount-v5-1:
+                    4-Omni-Directional-Wheel_Single_Body-v1-1:
+                      {}
+              drive_motor_mount-v11-2:
+                ST3215_Servo_Motor-v1-2:
+                  omni_wheel_mount-v5-2:
+                    4-Omni-Directional-Wheel_Single_Body-v1-2:
+                      {}
+              lipo_battery_mount-v3:
+                Battery---Battery-5.2-Ah-DC5521-Plug-v2:
+                  {}
+              servo_controller_mount-v3:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -560,10 +563,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.1497963666915894
+      Pitch: 0.29979661107063293
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.9686219692230225
+      Yaw: 4.518622398376465
     Saved: ~
 Window Geometry:
   Displays:

@@ -14,48 +14,42 @@
           <param name="use_serial">true</param>
           <param name="serial_port">/dev/ttyACM0</param>
           <param name="serial_baudrate">1000000</param>
-          <param name="joint_offsets_file">$(find lekiwi_hardware)/config/joint_offsets.yaml</param>
+          <!--<param name="joint_offsets_file">$(find lekiwi_hardware)/config/joint_offsets.yaml</param>-->
         </xacro:unless>
       </hardware>
       <joint name="shoulder_pan">
         <command_interface name="position" />
         <state_interface name="position">
-          <param name="initial_value">${initial_positions['Shoulder_Rotation']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
       <joint name="shoulder_lift">
         <command_interface name="position" />
         <state_interface name="position">
-          <param name="initial_value">${initial_positions['Shoulder_Pitch']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
       <joint name="elbow_flex">
         <command_interface name="position" />
         <state_interface name="position">
-          <param name="initial_value">${initial_positions['Elbow']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
       <joint name="wrist_flex">
         <command_interface name="position" />
         <state_interface name="position">
-          <param name="initial_value">${initial_positions['Wrist_Pitch']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
       <joint name="wrist_roll">
         <command_interface name="position" />
         <state_interface name="position">
-          <param name="initial_value">${initial_positions['Wrist_Roll']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>
       <joint name="gripper">
         <command_interface name="position" />
         <state_interface name="position">
-          <param name="initial_value">${initial_positions['Gripper']}</param>
         </state_interface>
         <!-- <state_interface name="velocity"/> -->
       </joint>

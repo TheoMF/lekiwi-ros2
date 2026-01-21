@@ -168,5 +168,5 @@ def generate_launch_description():
         holonomic_controller_node,
         odometry_publisher_node,
         rviz_node,
-        zero_pose_node
+        #zero_pose_node
     ]) 
