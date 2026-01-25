@@ -1488,6 +1488,23 @@
         <child link="STS3215_03a-v1" />
     </joint>
     <!-- START -->
+     <!-- Base Camera frame (dummy link + fixed joint) -->
+  <link name="base_camera">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="base_camera_frame_joint" type="fixed">
+    <origin xyz="-0.00 0.07 0.018" rpy="-1.5708 0 0."/> <!-- TODO MEASURE X AXIS ANGLE, (15°/-0.2618 for now) --> 
+    <parent link="base_link"/>
+    <child link="base_camera"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
     <!-- Link shoulder -->
   <link name="shoulder_link">
     <inertial>
