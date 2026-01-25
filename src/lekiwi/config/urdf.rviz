@@ -178,6 +178,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        base_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_footprint:
           Alpha: 1
           Show Axes: false
@@ -327,6 +331,8 @@ Visualization Manager:
           Value: false
         WaveShare_Mounting_Plate_01d-v1:
           Value: false
+        base_camera:
+          Value: true
         base_footprint:
           Value: false
         base_link:
@@ -349,16 +355,20 @@ Visualization Manager:
           Value: false
         lower_arm_link:
           Value: false
+        map:
+          Value: false
         moving_jaw_so101_v1_link:
           Value: false
         odom:
-          Value: true
+          Value: false
         omni_wheel_mount-v5:
           Value: false
         omni_wheel_mount-v5-1:
           Value: false
         omni_wheel_mount-v5-2:
           Value: false
+        plastic:
+          Value: true
         servo_controller_mount-v3:
           Value: false
         shoulder_link:
@@ -373,66 +383,70 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        odom:
-          base_footprint:
-            base_link:
-              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff:
-                base_plate_layer2-v3:
-                  Base_08q-v1:
-                    Base:
-                      {}
-                    Passive_Horn_01-v1:
-                      {}
-                    STS3215_03a-v1:
-                      shoulder_link:
-                        upper_arm_link:
-                          lower_arm_link:
-                            wrist_link:
-                              gripper_link:
-                                camera:
-                                  {}
-                                gripper_frame_link:
-                                  {}
-                                moving_jaw_so101_v1_link:
-                                  {}
-                    WaveShare_Mounting_Plate_01d-v1:
-                      {}
-                  Bottom-V2-v3:
-                    Top-V2-v2:
-                      {}
-              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-1:
-                {}
-              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-2:
-                {}
-              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-3:
-                {}
-              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-4:
-                {}
-              94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-5:
-                {}
-              Camera-Mount-v8:
-                Camera-Model-v3:
+        map:
+          odom:
+            base_footprint:
+              base_link:
+                94868A713_NO-THREADS_Female-Threaded-Hex-Standoff:
+                  base_plate_layer2-v3:
+                    Base_08q-v1:
+                      Base:
+                        {}
+                      Passive_Horn_01-v1:
+                        {}
+                      STS3215_03a-v1:
+                        shoulder_link:
+                          upper_arm_link:
+                            lower_arm_link:
+                              wrist_link:
+                                gripper_link:
+                                  camera:
+                                    plastic:
+                                      {}
+                                  gripper_frame_link:
+                                    {}
+                                  moving_jaw_so101_v1_link:
+                                    {}
+                      WaveShare_Mounting_Plate_01d-v1:
+                        {}
+                    Bottom-V2-v3:
+                      Top-V2-v2:
+                        {}
+                94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-1:
                   {}
-              drive_motor_mount-v11:
-                ST3215_Servo_Motor-v1:
-                  omni_wheel_mount-v5:
-                    4-Omni-Directional-Wheel_Single_Body-v1:
-                      {}
-              drive_motor_mount-v11-1:
-                ST3215_Servo_Motor-v1-1:
-                  omni_wheel_mount-v5-1:
-                    4-Omni-Directional-Wheel_Single_Body-v1-1:
-                      {}
-              drive_motor_mount-v11-2:
-                ST3215_Servo_Motor-v1-2:
-                  omni_wheel_mount-v5-2:
-                    4-Omni-Directional-Wheel_Single_Body-v1-2:
-                      {}
-              lipo_battery_mount-v3:
-                Battery---Battery-5.2-Ah-DC5521-Plug-v2:
+                94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-2:
                   {}
-              servo_controller_mount-v3:
-                {}
+                94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-3:
+                  {}
+                94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-4:
+                  {}
+                94868A713_NO-THREADS_Female-Threaded-Hex-Standoff-5:
+                  {}
+                Camera-Mount-v8:
+                  Camera-Model-v3:
+                    {}
+                base_camera:
+                  {}
+                drive_motor_mount-v11:
+                  ST3215_Servo_Motor-v1:
+                    omni_wheel_mount-v5:
+                      4-Omni-Directional-Wheel_Single_Body-v1:
+                        {}
+                drive_motor_mount-v11-1:
+                  ST3215_Servo_Motor-v1-1:
+                    omni_wheel_mount-v5-1:
+                      4-Omni-Directional-Wheel_Single_Body-v1-1:
+                        {}
+                drive_motor_mount-v11-2:
+                  ST3215_Servo_Motor-v1-2:
+                    omni_wheel_mount-v5-2:
+                      4-Omni-Directional-Wheel_Single_Body-v1-2:
+                        {}
+                lipo_battery_mount-v3:
+                  Battery---Battery-5.2-Ah-DC5521-Plug-v2:
+                    {}
+                servo_controller_mount-v3:
+                  {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -480,7 +494,7 @@ Visualization Manager:
           Scale: 1
           Value: true
         Value: true
-      Enabled: true
+      Enabled: false
       Keep: 1
       Name: Odometry
       Position Tolerance: 0.0010000000474974513
@@ -501,7 +515,7 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /odom
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -548,7 +562,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2.0358383655548096
+      Distance: 1.1488679647445679
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -563,10 +577,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.29979661107063293
+      Pitch: 0.02979675680398941
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.518622398376465
+      Yaw: 0.7586226463317871
     Saved: ~
 Window Geometry:
   Displays:
