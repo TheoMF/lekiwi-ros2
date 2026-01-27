@@ -151,7 +151,7 @@ def generate_launch_description():
         start_cameras_arg,
         robot_hardware_launch,
         navigation_launch,
-        motion_planning_launch,
-        cameras_launch,
+        # motion_planning_launch,
+        #cameras_launch,
         visualization_launch,
     ]) 

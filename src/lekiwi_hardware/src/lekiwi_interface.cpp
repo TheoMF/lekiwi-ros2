@@ -257,9 +257,9 @@ namespace lekiwi_controller
 
           wheel_speed *= servo_directions_[i];
 
-          RCLCPP_INFO(rclcpp::get_logger("LeKiwiInterface"),
-                      "WHEEL Servo %d velocity: %.3f rad/s -> %.1f deg/s -> %d raw", servo_id, velocity_rad_s,
-                      velocity_deg_s, wheel_speed);
+          RCLCPP_DEBUG(rclcpp::get_logger("LeKiwiInterface"),
+                       "WHEEL Servo %d velocity: %.3f rad/s -> %.1f deg/s -> %d raw", servo_id, velocity_rad_s,
+                       velocity_deg_s, wheel_speed);
 
           bool write_success = st3215_.WriteSpe(servo_id, wheel_speed, 50);
           if (!write_success)
@@ -268,13 +268,13 @@ namespace lekiwi_controller
           }
           else
           {
-            RCLCPP_INFO(rclcpp::get_logger("LeKiwiInterface"), "Successfully wrote velocity to servo %d", servo_id);
+            RCLCPP_DEBUG(rclcpp::get_logger("LeKiwiInterface"), "Successfully wrote velocity to servo %d", servo_id);
           }
         }
       }
 
       bool action_result = st3215_.RegWriteAction();
-      RCLCPP_INFO(rclcpp::get_logger("LeKiwiInterface"), "RegWriteAction() executed, result: %d", action_result);
+      RCLCPP_DEBUG(rclcpp::get_logger("LeKiwiInterface"), "RegWriteAction() executed, result: %d", action_result);
     }
 
     if (command_publisher_)
