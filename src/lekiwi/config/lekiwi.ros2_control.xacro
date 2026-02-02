@@ -14,7 +14,8 @@
           <param name="use_serial">true</param>
           <param name="serial_port">/dev/ttyACM0</param>
           <param name="serial_baudrate">1000000</param>
-          <!--<param name="joint_offsets_file">$(find lekiwi_hardware)/config/joint_offsets.yaml</param>-->
+          <param name="joint_offsets_file">$(find lekiwi_hardware)/config/joint_offsets.yaml</param>
+          <param name="calibration_file">$(find lekiwi_hardware)/config/joint_calibration.yaml</param>
         </xacro:unless>
       </hardware>
       <joint name="shoulder_pan">

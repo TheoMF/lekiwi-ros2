@@ -157,7 +157,7 @@ namespace lekiwi_controller
 
     node_ = rclcpp::Node::make_shared("lekiwi_driver");
     feedback_subscriber_ = node_->create_subscription<sensor_msgs::msg::JointState>(
-        "feedback", 10, std::bind(&LeKiwiInterface::feedback_callback, this, std::placeholders::_1));
+        "joint_states", 10, std::bind(&LeKiwiInterface::feedback_callback, this, std::placeholders::_1));
     command_publisher_ = node_->create_publisher<sensor_msgs::msg::JointState>("command", 10);
 
     torque_service_ = node_->create_service<std_srvs::srv::Trigger>(
@@ -238,6 +238,23 @@ namespace lekiwi_controller
         if (servo_id <= 6)
         {
           int joint_pos_cmd = radians_to_ticks(position_commands_[i], i);
+
+          // Clamp command to calibration limits if available
+          auto it_calib = joint_calibration_.find(info_.joints[i].name);
+          if (it_calib != joint_calibration_.end())
+          {
+            const auto &calib = it_calib->second;
+            if (joint_pos_cmd < calib.min_ticks)
+            {
+              RCLCPP_WARN(rclcpp::get_logger("LeKiwiInterface"), "ARM Servo %d command ticks %d below min %d - clipping to min", servo_id, joint_pos_cmd, calib.min_ticks);
+              joint_pos_cmd = calib.min_ticks;
+            }
+            else if (joint_pos_cmd > calib.max_ticks)
+            {
+              RCLCPP_WARN(rclcpp::get_logger("LeKiwiInterface"), "ARM Servo %d command ticks %d above max %d - clipping to max", servo_id, joint_pos_cmd, calib.max_ticks);
+              joint_pos_cmd = calib.max_ticks;
+            }
+          }
 
           RCLCPP_DEBUG(rclcpp::get_logger("LeKiwiInterface"), "ARM Servo %d command: %.2f rad -> %d ticks", servo_id,
                        position_commands_[i], joint_pos_cmd);
