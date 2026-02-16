@@ -13,7 +13,7 @@ joints:
       homing_offset: 1368
   shoulder_lift:
     min:
-      ticks: 820
+      ticks: 800
       speed: 0
       load: 0
     center:
